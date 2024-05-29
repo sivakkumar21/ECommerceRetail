@@ -1,4 +1,5 @@
-import { Product } from "./types/product";
+import { Product } from "./types/Product";
+
 export const sampleProducts: Product[] = [
   {
     name: "Nike Slim shirt",

@@ -1,5 +1,5 @@
-import { Col, Container, Nav, Navbar, NavbarBrand, Row } from "react-bootstrap";
-import { sampleProducts } from "./data";
+import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -21,20 +21,7 @@ function App() {
       </header>
       <main>
         <Container>
-          <Row>
-            {sampleProducts.map((item) => (
-              <Col key={item.slug} sm={6} md={4} lg={3}>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="product-image"
-                />
-                <h3>{item.name}</h3>
-                <p>{item.price}</p>
-                <p>{item.description}</p>
-              </Col>
-            ))}
-          </Row>
+          <Outlet />
         </Container>
       </main>
       <footer>
