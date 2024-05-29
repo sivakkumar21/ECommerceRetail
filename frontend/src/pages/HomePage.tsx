@@ -8,6 +8,7 @@ import ErrorMessage from "../components/MessageBox";
 import MessageBox from "../components/MessageBox";
 import { ApiError } from "../types/ApiError";
 import { getError } from "../utlis";
+import ProductItem from "../components/ProductItem";
 
 export default function HomePage() {
   type State = {
@@ -48,7 +49,7 @@ export default function HomePage() {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const result = await axios.get("/products1");
+        const result = await axios.get("/products");
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: ApiError | any) {
@@ -67,12 +68,7 @@ export default function HomePage() {
     <Row className="mt-5">
       {products.map((item) => (
         <Col key={item.slug} sm={6} md={4} lg={3}>
-          <Link to={`/product/${item.slug}`}>
-            <img src={item.image} alt={item.name} className="product-image" />
-            <h4>{item.name}</h4>
-            <div>{item.price}</div>
-            <p>{item.description}</p>
-          </Link>
+          <ProductItem product={item} />
         </Col>
       ))}
     </Row>
